@@ -1,0 +1,86 @@
+{
+  "name": "movies-api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && babel ./src --out-dir ./dist --extensions '.ts' --source-maps inline",
+    "watch": "nodemon ./src/index.ts --extensions '.ts' | pino-pretty -t SYS:standard",
+    "start": "node ./dist/index.js",
+    "lint": "tslint -p ./tsconfig.json",
+    "lint:fix": "npm run lint -- --fix",
+    "check-types": "tsc --skipLibCheck",
+    "check-types:watch": "npm run check-types -- --watch",
+    "test:unit": "jest",
+    "test:watch": "npm run test:unit -- --watch",
+    "test": "npm run test:unit"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@babel/node": "^7.2.2",
+    "envalid": "^4.1.4",
+    "fastify": "^1.13.4",
+    "make-promises-safe": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/jest": "^23.3.13",
+    "babel-core": "^7.0.0-bridge",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-root-import": "^6.1.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.9",
+    "pino-pretty": "^2.5.0",
+    "prettier": "^1.16.1",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.4"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "useBuiltIns": "entry",
+          "targets": {
+            "node": true
+          }
+        }
+      ],
+      "@babel/typescript"
+    ],
+    "plugins": [
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread",
+      [
+        "babel-plugin-root-import",
+        {
+          "rootPathSuffix": "./src"
+        }
+      ]
+    ],
+    "sourceMaps": "inline",
+    "retainLines": true
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "babel-node"
+    },
+    "watch": [
+      "./src"
+    ],
+    "ignore": [
+      "*.test.ts"
+    ],
+    "delay": 500
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}
