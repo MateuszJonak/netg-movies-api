@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { EntityExists } from '../validators/EntityExists';
 import { Movie } from './Movie';
 
 @Entity()
@@ -24,6 +25,9 @@ export class Comment {
   @UpdateDateColumn()
   public updatedAt!: string;
 
-  @ManyToOne(type => Movie, movie => movie.comments)
+  @ManyToOne(type => Movie, movie => movie.comments, {
+    nullable: false,
+  })
+  @EntityExists()
   public movie!: Movie;
 }

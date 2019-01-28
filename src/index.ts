@@ -4,6 +4,7 @@ import fastify from 'fastify';
 import 'make-promises-safe';
 import { env } from './config';
 import db from './db';
+import comments from './routes/comments';
 import movies from './routes/movies';
 import { FastifyMiddleware } from './types/fastify';
 
@@ -20,6 +21,7 @@ const app = fastify({
 
   app.log.debug('Registering plugins');
   app.register(movies());
+  app.register(comments());
 
   await app.ready();
 
