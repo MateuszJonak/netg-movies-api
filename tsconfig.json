@@ -14,6 +14,9 @@
     "isolatedModules": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
+    // Decorators
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     // Configuration for root imports
     "baseUrl": "src",
     "paths": {

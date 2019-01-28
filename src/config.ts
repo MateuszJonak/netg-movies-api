@@ -7,6 +7,7 @@ export const env = cleanEnv(
       choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent'],
       default: 'fatal',
     }),
+    MYSQL_URL: str(),
     SERVER_HOST: host({ default: '0.0.0.0' }),
     SERVER_PORT: port({ default: 3000 }),
   },
