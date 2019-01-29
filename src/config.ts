@@ -3,6 +3,8 @@ import { cleanEnv, host, port, str } from 'envalid';
 export const env = cleanEnv(
   process.env,
   {
+    BASIC_AUTH_PASSWORD: str(),
+    BASIC_AUTH_USERNAME: str(),
     LOGGER_LEVEL: str({
       choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent'],
       default: 'fatal',

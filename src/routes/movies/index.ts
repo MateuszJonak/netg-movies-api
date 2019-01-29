@@ -5,6 +5,8 @@ import { handler as showHandler } from './show';
 
 // TODO: Add schema, pagination?
 export default (): FastifyPlugin => (app, options, next) => {
+  app.addHook('preHandler', app.auth([app.basicAuth]));
+
   app.post('/movies', createHandler());
   app.get('/movies', listHandler());
 

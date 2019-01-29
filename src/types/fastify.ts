@@ -4,6 +4,7 @@ import {
   DefaultParams,
   DefaultQuery,
   FastifyInstance,
+  FastifyMiddleware,
   FastifyRequest,
   Middleware,
   RegisterOptions,
@@ -34,14 +35,28 @@ export type FastifyRequest<T = DefaultBody> = FastifyRequest<
   T
 >;
 
-export type FastifyPlugin = (
-  app: FastifyInstance,
-  options: FastifyRegisterOptions,
-  next: FastifyRegisterCallback,
+export type Plugin<T> = (
+  instance: IFastifyInstanceDecorated,
+  opts: T,
+  callback: (err?: Error) => void,
 ) => void;
 
-export type FastifyMiddleware = Middleware<
+export type FastifyPlugin = Plugin<FastifyRegisterOptions>;
+
+export type Middleware = Middleware<Server, IncomingMessage, ServerResponse>;
+
+type CustomFastifyMiddleware = FastifyMiddleware<
   Server,
   IncomingMessage,
   ServerResponse
 >;
+export type FastifyMiddleware = CustomFastifyMiddleware;
+
+export interface IFastifyInstanceDecorated extends FastifyInstance {
+  auth: (middlewares: CustomFastifyMiddleware[]) => CustomFastifyMiddleware;
+  basicAuth: CustomFastifyMiddleware;
+  register<T extends FastifyRegisterOptions>(
+    plugin: Plugin<T>,
+    opts?: T,
+  ): IFastifyInstanceDecorated;
+}
