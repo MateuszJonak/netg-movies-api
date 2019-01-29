@@ -11,6 +11,7 @@ export const env = cleanEnv(
       choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent'],
       default: 'fatal',
     }),
+    OMDB_API_KEY: str(),
     PORT: port({ default: 3000 }),
   },
   { strict: true },

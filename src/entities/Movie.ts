@@ -1,6 +1,14 @@
 import { IsDefined } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Comment } from './Comment';
+import { MovieOMDb } from './MovieOMDb';
 
 @Entity()
 export class Movie {
@@ -13,4 +21,8 @@ export class Movie {
 
   @OneToMany(type => Comment, comment => comment.movie)
   public comments!: Comment[];
+
+  @OneToOne(type => MovieOMDb, { cascade: true })
+  @JoinColumn()
+  public omdb!: MovieOMDb;
 }
