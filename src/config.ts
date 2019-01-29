@@ -5,13 +5,13 @@ export const env = cleanEnv(
   {
     BASIC_AUTH_PASSWORD: str(),
     BASIC_AUTH_USERNAME: str(),
+    DATABASE_URL: str(),
+    HOST: host({ default: '0.0.0.0' }),
     LOGGER_LEVEL: str({
       choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent'],
       default: 'fatal',
     }),
-    MYSQL_URL: str(),
-    SERVER_HOST: host({ default: '0.0.0.0' }),
-    SERVER_PORT: port({ default: 3000 }),
+    PORT: port({ default: 3000 }),
   },
   { strict: true },
 );

@@ -12,7 +12,8 @@
     "check-types:watch": "npm run check-types -- --watch",
     "test:unit": "jest",
     "test:watch": "npm run test:unit -- --watch",
-    "test": "npm run test:unit"
+    "test": "npm run test:unit",
+    "postinstall": "npm run build"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -26,7 +27,7 @@
     "fastify": "^1.13.4",
     "fastify-auth": "^0.3.0",
     "make-promises-safe": "^4.0.0",
-    "mysql": "^2.16.0",
+    "pg": "^7.8.0",
     "typeorm": "^0.2.12"
   },
   "devDependencies": {
@@ -102,5 +103,8 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
