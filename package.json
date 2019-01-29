@@ -1,6 +1,6 @@
 {
   "name": "movies-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf ./dist && babel ./src --out-dir ./dist --extensions '.ts' --source-maps inline",
@@ -17,14 +17,23 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@babel/node": "^7.2.2",
+    "@types/basic-auth": "^1.1.2",
+    "@types/cors": "^2.8.4",
+    "basic-auth": "^2.0.1",
+    "class-validator": "^0.9.1",
+    "cors": "^2.8.5",
     "envalid": "^4.1.4",
     "fastify": "^1.13.4",
-    "make-promises-safe": "^4.0.0"
+    "fastify-auth": "^0.3.0",
+    "make-promises-safe": "^4.0.0",
+    "mysql": "^2.16.0",
+    "typeorm": "^0.2.12"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-typescript": "^7.1.0",
@@ -55,7 +64,18 @@
       "@babel/typescript"
     ],
     "plugins": [
-      "@babel/proposal-class-properties",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
       "@babel/proposal-object-rest-spread",
       [
         "babel-plugin-root-import",
