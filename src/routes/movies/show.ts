@@ -9,7 +9,7 @@ export const handler = (): FastifyRequestHandler => async (
   try {
     const movieId = request.params.movieId;
     const movie = await getRepository(Movie).findOne(movieId, {
-      relations: ['comments'],
+      relations: ['comments', 'omdb', 'omdb.ratings'],
     });
 
     if (!movie) {
