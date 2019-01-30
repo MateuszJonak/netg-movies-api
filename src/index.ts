@@ -31,7 +31,7 @@ app.decorate('basicAuth', basicAuthMiddleware);
   await app.ready();
 
   app.log.debug('Starting server');
-  await app.listen(env.SERVER_PORT, env.SERVER_HOST);
+  await app.listen(env.PORT, env.HOST);
 })().catch(error => {
   app.log.fatal(error);
   setImmediate(() => process.exit(1));
