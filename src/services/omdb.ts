@@ -19,12 +19,7 @@ export const call = async (params: { [key: string]: string }) => {
   return data;
 };
 
-export const enrich = async (body: any) => {
-  const response = await call({ t: body.title, type: 'movie' });
-  const omdb = deserialize(MovieOMDb, response);
-
-  return {
-    ...body,
-    omdb,
-  };
+export const getData = async (title: string) => {
+  const response = await call({ t: title, type: 'movie' });
+  return deserialize(MovieOMDb, response);
 };

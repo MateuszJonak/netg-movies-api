@@ -1,6 +1,33 @@
 import { getRepository } from 'typeorm';
+import * as schemas from '~/schemas';
 import { Movie } from '../../entities/Movie';
 import { FastifyRequestHandler } from '../../types/fastify';
+
+export const schema = {
+  summary: 'Info for a specific movie',
+  params: {
+    type: 'object',
+    properties: {
+      movieId: { type: 'string' },
+    },
+  },
+  response: {
+    200: {
+      description: 'Expected response to a valid request',
+      ...schemas.showedmovie,
+    },
+    '404': {
+      ...schemas.defaultError,
+      description: 'Movie not found',
+    },
+    default: schemas.defaultError,
+  },
+  security: [
+    {
+      basicAuth: [],
+    },
+  ],
+};
 
 export const handler = (): FastifyRequestHandler => async (
   request,

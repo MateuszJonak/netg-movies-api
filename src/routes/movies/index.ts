@@ -1,16 +1,18 @@
 import { FastifyPlugin } from '~/types/fastify';
-import { handler as createHandler } from './create';
-import { handler as listHandler } from './list';
-import { handler as showHandler } from './show';
+import * as create from './create';
+import * as list from './list';
+import * as show from './show';
 
-// TODO: Add schema, pagination?
+export interface ICreateBody {
+  title: string;
+}
+
 export default (): FastifyPlugin => (app, options, next) => {
   app.addHook('preHandler', app.auth([app.basicAuth]));
 
-  app.post('/movies', createHandler());
-  app.get('/movies', listHandler());
-
-  app.get('/movies/:movieId', showHandler());
+  app.post('/movies', { schema: create.schema }, create.handler());
+  app.get('/movies', { schema: list.schema }, list.handler());
+  app.get('/movies/:movieId', { schema: show.schema }, show.handler());
 
   next();
 };

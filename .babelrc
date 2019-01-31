@@ -1,0 +1,37 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "node": true
+        }
+      }
+    ],
+    "@babel/typescript"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/proposal-object-rest-spread",
+    [
+      "babel-plugin-root-import",
+      {
+        "rootPathSuffix": "./src"
+      }
+    ],
+  ],
+  "sourceMaps": "inline",
+  "retainLines": true
+}

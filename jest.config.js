@@ -12,4 +12,7 @@ module.exports = {
     "json",
     "node",
   ],
+  "setupFiles": [
+    "./setupJest.js"
+  ],
 }
