@@ -1,5 +1,5 @@
 import auth, { BasicAuthResult } from 'basic-auth';
-import { env } from '~/config';
+import { env } from '../config';
 import { FastifyMiddleware } from '../types/fastify';
 
 const validate = (credentials: BasicAuthResult) =>

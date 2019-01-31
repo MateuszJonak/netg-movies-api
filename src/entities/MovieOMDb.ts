@@ -15,51 +15,51 @@ export class MovieOMDb {
   @serializable(alias('Year'))
   public year!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Rated'))
   public rated!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Released'))
   public released!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Runtime'))
   public runtime!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Genre'))
   public genre!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Director'))
   public director!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Writer'))
   public writer!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Actors'))
   public actors!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Plot'))
   public plot!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Language'))
   public language!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Country'))
   public country!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Awards'))
   public awards!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Poster'))
   public poster!: string;
 
@@ -69,39 +69,39 @@ export class MovieOMDb {
   @serializable(alias('Ratings', list(object(MovieOMDbRating))))
   public ratings!: MovieOMDbRating[];
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Metascore'))
   public metascore!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable
   public imdbRating!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable
   public imdbVotes!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable
   public imdbID!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Type'))
   public type!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('DVD'))
   public dvd!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('BoxOffice'))
   public boxOffice!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Production'))
   public production!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Website'))
   public website!: string;
 }

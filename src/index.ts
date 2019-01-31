@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import cors from 'cors';
 import fastify from 'fastify';
 import fastifyAuth from 'fastify-auth';
+import fastifySwagger from 'fastify-swagger';
 import 'make-promises-safe';
 import { env } from './config';
 import db from './db';
@@ -19,11 +20,26 @@ const app = fastify({
 app.decorate('basicAuth', basicAuthMiddleware);
 
 (async () => {
-  // TODO: do on the same time
   await db();
   app.use(cors() as Middleware);
 
   app.log.debug('Registering plugins');
+  app.register(fastifySwagger, {
+    swagger: {
+      info: {
+        title: 'Movie API',
+        version: '0.1.0',
+      },
+      securityDefinitions: {
+        BasicAuth: {
+          type: 'basic',
+          name: 'basicAuth',
+        },
+      },
+    },
+    routePrefix: '/docs',
+    exposeRoute: true,
+  });
   app.register(fastifyAuth);
   app.register(movies());
   app.register(comments());

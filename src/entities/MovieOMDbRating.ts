@@ -7,11 +7,11 @@ export class MovieOMDbRating {
   @PrimaryGeneratedColumn()
   public id!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Source'))
   public source!: string;
 
-  @Column('varchar')
+  @Column('varchar', { nullable: true })
   @serializable(alias('Value'))
   public value!: string;
 

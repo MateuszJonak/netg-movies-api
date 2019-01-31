@@ -2,13 +2,16 @@ import fetch, { Request, RequestInit } from 'node-fetch';
 
 async function checkStatus(response: any) {
   let errorJSON;
+
   if (response.ok) {
     return response;
   } else {
+    const errorText = await response.text();
+
     try {
-      errorJSON = await response.json();
+      errorJSON = JSON.parse(errorText);
     } catch (error) {
-      throw response;
+      throw errorText;
     }
     throw errorJSON;
   }
