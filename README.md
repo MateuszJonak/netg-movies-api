@@ -1,9 +1,5 @@
 # Movies API
 
-## Heroku
-
-Application is deployed here: `https://intense-hamlet-82133.herokuapp.com/`
-
 ## Quick local setup
 
 1. Clone project
